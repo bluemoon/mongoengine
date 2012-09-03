@@ -29,7 +29,9 @@ VERSION = get_version(eval(version_line.split('=')[-1]))
 print VERSION
 
 
-ext_modules = [Extension("mongoengine.optimized", ["mongoengine/optimized.pyx"])]
+ext_modules = [Extension("mongoengine.optimized", ["mongoengine/optimized.pyx"]),
+               Extension("mongoengine.fields", ["mongoengine/fields.pyx"]),
+               Extension("mongoengine.base", ["mongoengine/base.pyx"])]
 
 CLASSIFIERS = [
     'Development Status :: 4 - Beta',

@@ -30,8 +30,8 @@ print VERSION
 
 
 ext_modules = [Extension("mongoengine.optimized", ["mongoengine/optimized.pyx"]),
-               Extension("mongoengine.fields", ["mongoengine/fields.pyx"]),
-               Extension("mongoengine.base", ["mongoengine/base.pyx"])]
+               Extension("mongoengine.fields", ["mongoengine/fields.pyx"])]
+               #Extension("mongoengine.base", ["mongoengine/base.pyx"])]
 
 CLASSIFIERS = [
     'Development Status :: 4 - Beta',

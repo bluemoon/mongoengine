@@ -27,6 +27,8 @@ except ImportError:
     from StringIO import StringIO
 
 
+from optimized import _convert_from_datetime
+
 __all__ = ['StringField', 'IntField', 'FloatField', 'BooleanField',
            'DateTimeField', 'EmbeddedDocumentField', 'ListField', 'DictField',
            'ObjectIdField', 'ReferenceField', 'ValidationError', 'MapField',
@@ -390,10 +392,10 @@ class ComplexDateTimeField(StringField):
         return self._convert_from_string(value)
 
     def to_mongo(self, value):
-        return self._convert_from_datetime(value)
+        return _convert_from_datetime(self, value)
 
     def prepare_query_value(self, op, value):
-        return self._convert_from_datetime(value)
+        return _convert_from_datetime(self, value)
 
 
 class EmbeddedDocumentField(BaseField):

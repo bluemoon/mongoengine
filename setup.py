@@ -1,4 +1,9 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages
+from distutils.core import setup
+from distutils.extension import Extension
+
+from Cython.Distutils import build_ext
+
 import os
 
 DESCRIPTION = "A Python Document-Object Mapper for working with MongoDB"
@@ -22,6 +27,9 @@ init = os.path.join(os.path.dirname(__file__), 'mongoengine', '__init__.py')
 version_line = filter(lambda l: l.startswith('VERSION'), open(init))[0]
 VERSION = get_version(eval(version_line.split('=')[-1]))
 print VERSION
+
+
+ext_modules = [Extension("mongoengine.optimized", ["mongoengine/optimized.pyx"])]
 
 CLASSIFIERS = [
     'Development Status :: 4 - Beta',
@@ -48,5 +56,7 @@ setup(name='mongoengine',
       platforms=['any'],
       classifiers=CLASSIFIERS,
       install_requires=['pymongo'],
-      tests_require=['nose', 'coverage', 'blinker', 'django>=1.3', 'PIL']
+      tests_require=['nose', 'coverage', 'blinker', 'django>=1.3', 'PIL'],
+      cmdclass = {'build_ext': build_ext},
+      ext_modules = ext_modules
 )

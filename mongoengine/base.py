@@ -913,10 +913,11 @@ class BaseDocument(object):
 
         changed_fields = []
         errors_dict = {}
-
-        for field_name, field in cls._fields.items():
-            if field.db_field in data:
-                value = data[field.db_field]
+        i = cls._fields.items()
+        for field_name, field in i:
+            db_field = field.db_field
+            if db_field in data:
+                value = data[db_field]
                 try:
                     data[field_name] = (value if value is None
                                     else field.to_python(value))

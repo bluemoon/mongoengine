@@ -4,7 +4,9 @@ from collections import defaultdict
 from queryset import QuerySet, QuerySetManager
 from queryset import DoesNotExist, MultipleObjectsReturned
 from queryset import DO_NOTHING
-import signals
+
+from mongoengine import signals
+
 import sys
 import pymongo
 from bson import ObjectId
@@ -15,7 +17,6 @@ from bson.dbref import DBRef
 
 from optimized import complex_base_field_to_mongo
 from base_opt import to_python
-
 class NotRegistered(Exception):
     pass
 
@@ -311,8 +312,8 @@ class ComplexBaseField(BaseField):
     def to_python(self, value):
         """Convert a MongoDB-compatible type to a Python type.
         """
-        to_python(self, value)
-        """
+        #to_python(self, value)
+        
         from mongoengine import Document
 
         if isinstance(value, basestring):
@@ -348,8 +349,8 @@ class ComplexBaseField(BaseField):
 
         if is_list:  # Convert back to a list
             return [v for k, v in sorted(value_dict.items(), key=operator.itemgetter(0))]
-        return value_dict """
-
+        return value_dict 
+        
     def to_mongo(self, value):
         """Convert a Python type to a MongoDB-compatible type.
         """

@@ -16,7 +16,7 @@ from functools import partial
 from bson.dbref import DBRef
 
 from optimized import complex_base_field_to_mongo
-
+from base_opt import to_python
 class NotRegistered(Exception):
     pass
 
@@ -312,6 +312,8 @@ class ComplexBaseField(BaseField):
     def to_python(self, value):
         """Convert a MongoDB-compatible type to a Python type.
         """
+        to_python(self, value)
+        """
         from mongoengine import Document
 
         if isinstance(value, basestring):
@@ -347,7 +349,7 @@ class ComplexBaseField(BaseField):
 
         if is_list:  # Convert back to a list
             return [v for k, v in sorted(value_dict.items(), key=operator.itemgetter(0))]
-        return value_dict
+        return value_dict """
 
     def to_mongo(self, value):
         """Convert a Python type to a MongoDB-compatible type.

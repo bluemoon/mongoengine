@@ -4,9 +4,7 @@ from collections import defaultdict
 from queryset import QuerySet, QuerySetManager
 from queryset import DoesNotExist, MultipleObjectsReturned
 from queryset import DO_NOTHING
-
-from mongoengine import signals
-
+import signals
 import sys
 import pymongo
 from bson import ObjectId
@@ -17,6 +15,7 @@ from bson.dbref import DBRef
 
 from optimized import complex_base_field_to_mongo
 from base_opt import to_python
+
 class NotRegistered(Exception):
     pass
 

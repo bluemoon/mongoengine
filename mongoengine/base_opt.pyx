@@ -1,4 +1,4 @@
-from mongoengine import Document
+import Document
 from bson.dbref import DBRef
 
 import cython

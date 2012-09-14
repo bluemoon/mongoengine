@@ -30,7 +30,7 @@ print VERSION
 
 
 ext_modules = [Extension("mongoengine.optimized", ["mongoengine/optimized.pyx"]),
-               Extension("mongoengine.fields", ["mongoengine/fields.pyx"])]
+               Extension("mongoengine.fields", ["mongoengine/fields.pyx"]),
                Extension("mongoengine.base_opt", ["mongoengine/base_opt.pyx"])]
 
 CLASSIFIERS = [
